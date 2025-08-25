@@ -1,4 +1,4 @@
-name: MY FIRST TASK
+name: MY-FIRST-TASK
 on: push
 jobs:
  first-job:
