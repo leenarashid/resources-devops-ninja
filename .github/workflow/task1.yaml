@@ -1,15 +1,32 @@
-name: MY-FIRST-TASK
-on: push
+name: Deploy Project
+on: [push, workflow_dispatch]
 jobs:
- first-job:
-  runs-on: ubuntu-latest
-  steps:
-    - name: PRINT GREETINGS
-      run: echo "hi helloo how are you??"
-    - name: PRINT GOODBYE
-      run: echo "see you soon!!!"
-  second-job:
-   runs-on: ubuntu-latest
-   steps: 
-     - name: PRINT HELLO WORLD
-       run : echo "HELLO WORLD"
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm ci
+      - name: Run tests
+        run: npm test
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm install 
+      - name: Build project
+        run: npm run build
+      - name: Deploy
+        run: echo "Deploying ..."
