@@ -2,7 +2,7 @@ name: MY-FIRST-TASK
 on: push
 jobs:
  first-job:
-  runs-on: ubunut-latest
+  runs-on: ubuntu-latest
   steps:
     - name: PRINT GREETINGS
       run: echo "hi helloo how are you??"
