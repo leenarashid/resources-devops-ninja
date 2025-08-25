@@ -1,0 +1,17 @@
+name: first Workflow
+on: push
+jobs: 
+ first-job:
+   runs-on: ubuntu-latest
+   steps:
+      - name: Print Greetings
+        run: echo "HI HELLOOOO!!"
+      - name: Print bye
+        run: echo "see you soon"
+ second-job:
+  runs-on: ubuntu-latest
+  steps: 
+    - name: Print Hllo World
+      run: echo "HELLO WORLD !!!"
+  
+   
